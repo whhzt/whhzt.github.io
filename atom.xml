@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>whhzt的博客</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-10-13T12:10:03.144Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>我的博客</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sqli-labs 初入</title>
+    <link href="http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/"/>
+    <id>http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/</id>
+    <published>2021-10-13T12:07:26.000Z</published>
+    <updated>2021-10-13T12:10:03.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、判断注入点<br><br>2、判断是整型还是字符型<br><br>3、判断查询列数<br><br>4、判断显示位<br><br>5、获取所有数据库名<br><br>6、获取数据库所有表名<br><br>7、获取字段名<br><br>8、获取字段中的数据</p><span id="more"></span><p>information_schema库的schemata表保存了所有数据库的名称<br><br>schemata_name，tables表保存了所有的表名<br><br>table_name列对应数据库名table_scema<br><br>columns表保存了所有字段名<br><br>column_name列对应表名table_name和数据库名table_shcema</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1、判断注入点&lt;br&gt;&lt;br&gt;2、判断是整型还是字符型&lt;br&gt;&lt;br&gt;3、判断查询列数&lt;br&gt;&lt;br&gt;4、判断显示位&lt;br&gt;&lt;br&gt;5、获取所有数据库名&lt;br&gt;&lt;br&gt;6、获取数据库所有表名&lt;br&gt;&lt;br&gt;7、获取字段名&lt;br&gt;&lt;br&gt;8、获取字段中的数据&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>http请求方式</title>
+    <link href="http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/"/>
+    <id>http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</id>
+    <published>2021-10-01T16:27:29.000Z</published>
+    <updated>2021-10-13T12:11:00.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>（攻防世界）get可以直接在url后添加，把添加后的url用burpsuites抓包，发送到repeater模块，把GET转为POST<br>填加实体头Content-Type:Content-Type: application/x-www-form-urlencoded，再把post请求内容放在最后，然后发送。</p><span id="more"></span><p>—九大全局变量：</p><p>$_POST [用于接收post提交的数据]<br>$_GET [用于获取url地址栏的参数数据]<br>$_FILES [用于文件就收的处理img 最常见]<br>$_COOKIE [用于获取与setCookie()中的name 值]<br>$_SESSION [用于存储session的值或获取session中的值]<br>$_REQUEST [具有get,post的功能，但比较慢]<br>SERVER[是预定义服务器变量的一种，所有SERVER[是预定义服务器变量的一种，所有_SERVER [是预定义服务器变量的一种，所有_SERVER开头的都<br>$GLOBALS [一个包含了全部变量的全局组合数组]<br>$_ENV [ 是一个包含服务器端环境变量的数组。它是PHP中一个超级全局变量，我们可以在PHP 程序的任何地方直接访问它]</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;（攻防世界）get可以直接在url后添加，把添加后的url用burpsuites抓包，发送到repeater模块，把GET转为POST&lt;br&gt;填加实体头Content-Type:Content-Type: application/x-www-form-urlencoded，再把post请求内容放在最后，然后发送。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>弱密码破解</title>
+    <link href="http://example.com/2021/09/30/%E5%BC%B1%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/"/>
+    <id>http://example.com/2021/09/30/%E5%BC%B1%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/</id>
+    <published>2021-09-29T16:17:19.000Z</published>
+    <updated>2021-10-13T12:11:25.226Z</updated>
+    
+    <content type="html"><![CDATA[<p>（攻防世界）根据提示发现账号为admin，然后在burpsuites的proxy的intercept中抓包，随便输入错误密码，跳转网页，把抓包到的东西action到intruder模块（抓包的网页要是之后跳转的，如果不确定，可以在proxy的;http history中发送），在intruder的positions中确定密码的爆破点（已知账号，账号确定，账号前后§符号去掉），在payloads的有效载荷中载入密码字典，然后开始攻击，字节不同的为密码.</p><span id="more"></span><hr><h1>Burp Intruder主要有四个模块组成:</h1><p>1：Target 用于配置目标服务器进行攻击的详细信息。<br>2：Positions  设置Payloads的插入点以及攻击类型（攻击模式）。<br>3：Payloads  设置payload，配置字典<br>4：Opetions   此选项卡包含了request headers，request engine，attack results ，grep match，grep_extrack，grep payloads和redirections。你可以发动攻击之前，在主要Intruder的UI上编辑这些选项，大部分设置也可以在攻击时对已在运行的窗口进行修改。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;（攻防世界）根据提示发现账号为admin，然后在burpsuites的proxy的intercept中抓包，随便输入错误密码，跳转网页，把抓包到的东西action到intruder模块（抓包的网页要是之后跳转的，如果不确定，可以在proxy的;http history中发送），在intruder的positions中确定密码的爆破点（已知账号，账号确定，账号前后§符号去掉），在payloads的有效载荷中载入密码字典，然后开始攻击，字节不同的为密码.&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Burp Suite的初使用（攻防世界）</title>
+    <link href="http://example.com/2021/09/29/Burp-Suite%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2021/09/29/Burp-Suite%E7%9A%84%E5%88%9D%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-09-29T15:29:32.000Z</published>
+    <updated>2021-10-13T12:10:29.024Z</updated>
+    
+    <content type="html"><![CDATA[<h1>查看response</h1>先直接在url上添加cookie.php,把这个网页用burpsuite点开进行抓包，按照提示查看response，发现flag<span id="more"></span>---Proxy模块(代理模块)点开Intercept，用burpsuite抓个包。可以设置浏览器，设置代理（要记得抓完包后取消代理，不然上不了网）也可以直接点击open browser(可以先点击open browser,再开启拦截，又可以拦截到网页信息，又可以打开网页)想对网址信息进行其他操作，点action把抓包的网址发到别的模块去.]<hr><p>• admin———————————-网站后台目录<br>• data————————————数据库相关目录<br>• install———————————-安装目录<br>• member——————————-会员目录<br>• template——————————模板目录(和网站建立相关的整体架构)<br>• data【confing.php】————–数据库配置文件，网站和数据库的通讯信息，连接账号密码，可以去连接对方数据库，从数据库去得到这个网站的源码里面涉及到的管理员的账号密码。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1&gt;查看response&lt;/h1&gt;
+先直接在url上添加cookie.php,把这个网页用burpsuite点开进行抓包，按照提示查看response，发现flag</summary>
+    
+    
+    
+    
+    <category term="查看response" scheme="http://example.com/tags/%E6%9F%A5%E7%9C%8Bresponse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>域名后缀</title>
+    <link href="http://example.com/2021/09/26/%E5%9F%9F%E5%90%8D%E5%90%8E%E7%BC%80/"/>
+    <id>http://example.com/2021/09/26/%E5%9F%9F%E5%90%8D%E5%90%8E%E7%BC%80/</id>
+    <published>2021-09-26T02:57:04.000Z</published>
+    <updated>2021-09-27T15:22:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>点开一个网址都可以先F12查看源代码，查看提示，按照提示输入域名后缀（也都可以试试输入/robots.txt，或者.php）</p><span id="more"></span>   <h1>robots协议简介</h1>     Robots协议（也称为爬虫协议、机器人协议等）的全称是“网络爬虫排除标准”（Robots Exclusion Protocol），网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取。   <h1>robots.txt文件写法</h1><hr><p>User-agent: *                      所有的搜索引擎种类</p><hr><p>Disallow: /admin/               禁止爬寻admin目录下面的目录</p><hr><p>Disallow: /require/              禁止爬寻require目录下面的目录</p><hr><p>Disallow: /ABC/                   禁止爬寻ABC目录下面的目录</p><hr><p>Disallow: /cgi-bin/.htm       禁止访问/cgi-bin/目录下的所有以”.htm”为后缀的URL(包含子目录)</p><hr><p>Disallow: /?*                        禁止访问网站中所有包含问号 (?) 的网址</p><hr><p>Disallow: /.jpg$                   禁止抓取网页所有的.jpg格式的图片</p><hr><p>Disallow:/ab/adc.html         禁止爬取ab文件夹下面的adc.html文</p><hr><p>Allow: /cgi-bin/　               允许爬寻cgi-bin目录下面的目录</p><hr><p>Allow: /tmp                         允许爬寻tmp的整个目录</p><hr><p>Allow: .htm$                        仅允许访问以”.htm”为后缀的URL</p><hr><p>Allow: .gif$                         允许抓取网页和gif格式图片</p><hr><p>Sitemap:                             网站地图 代表这个页面是网站地图</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;点开一个网址都可以先F12查看源代码，查看提示，按照提示输入域名后缀（也都可以试试输入/robots.txt，或者.php）&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="刚开始尝试一些简单web" scheme="http://example.com/tags/%E5%88%9A%E5%BC%80%E5%A7%8B%E5%B0%9D%E8%AF%95%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开始尝试一下</title>
+    <link href="http://example.com/2021/09/21/%E5%BC%80%E5%A7%8B%E5%B0%9D%E8%AF%95%E4%B8%80%E4%B8%8B/"/>
+    <id>http://example.com/2021/09/21/%E5%BC%80%E5%A7%8B%E5%B0%9D%E8%AF%95%E4%B8%80%E4%B8%8B/</id>
+    <published>2021-09-21T15:49:17.000Z</published>
+    <updated>2021-09-21T15:55:36.344Z</updated>
+    
+    <content type="html"><![CDATA[<p> 好像只能先做点misc</p><span id="more"></span><p><img src="https://s3.bmp.ovh/imgs/2021/09/9a16fd331fab1525.png" alt=" "></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt; 好像只能先做点misc&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="攻防世界web为什么开不了" scheme="http://example.com/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E4%B8%8D%E4%BA%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>the moon</title>
+    <link href="http://example.com/2021/09/19/the-moon/"/>
+    <id>http://example.com/2021/09/19/the-moon/</id>
+    <published>2021-09-19T10:18:06.000Z</published>
+    <updated>2021-09-19T10:27:39.901Z</updated>
+    
+    <content type="html"><![CDATA[<p>中秋</p><span id="more"></span><p><img src="https://s3.bmp.ovh/imgs/2021/09/e67baf0a153948f2.png" alt="平潭月亮"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;中秋&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="月亮" scheme="http://example.com/tags/%E6%9C%88%E4%BA%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>再测试一下下</title>
+    <link href="http://example.com/2021/09/18/%E5%86%8D%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E4%B8%8B/"/>
+    <id>http://example.com/2021/09/18/%E5%86%8D%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E4%B8%8B/</id>
+    <published>2021-09-18T11:30:13.000Z</published>
+    <updated>2021-09-18T11:33:21.374Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s3.bmp.ovh/imgs/2021/09/8a60ed4f85700ca4.png" alt="随手画的"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://s3.bmp.ovh/imgs/2021/09/8a60ed4f85700ca4.png&quot; alt=&quot;随手画的&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>测试一下我的博客</title>
+    <link href="http://example.com/2021/09/18/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/09/18/%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
+    <published>2021-09-18T03:52:35.369Z</published>
+    <updated>2021-09-18T03:52:55.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>希望可以<br>date: 2021-09-18 11:52:35<br>tags:</p><hr>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;希望可以&lt;br&gt;date: 2021-09-18 11:52:35&lt;br&gt;tags:&lt;/p&gt;
+&lt;hr&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/09/18/hello-world/"/>
+    <id>http://example.com/2021/09/18/hello-world/</id>
+    <published>2021-09-18T03:47:43.609Z</published>
+    <updated>1985-10-26T08:15:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
