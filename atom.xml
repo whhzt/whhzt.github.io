@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-21T15:45:19.254Z</updated>
+  <updated>2021-10-25T13:37:00.960Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>5-6</title>
+    <link href="http://example.com/2021/10/25/sqli-labs%205-6/"/>
+    <id>http://example.com/2021/10/25/sqli-labs%205-6/</id>
+    <published>2021-10-25T13:32:40.000Z</published>
+    <updated>2021-10-25T13:37:00.960Z</updated>
+    
+    <content type="html"><![CDATA[<p>用到截取字符串的问题，不回显的情况下进行的注入（盲注） 要截取字符串。<br>用到的三个函数mid(),substr(),left()</p><span id="more"></span><hr><h1>mid()函数</h1>mid(提取字符的字段,开始提取的位置,提取的长度)<h1>substr()函数</h1>string substring(提取字符的字段,开始提取的位置,提取的长度)string substr(提取字符的字段,开始提取的位置,提取的长度)<h1>left()函数</h1>Left()得到字符串左部指定个数的字符Left ( 要截取的字符串, 要截取的长度 )   ]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;用到截取字符串的问题，不回显的情况下进行的注入（盲注） 要截取字符串。&lt;br&gt;用到的三个函数mid(),substr(),left()&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>labs-sqli 1-5</title>
